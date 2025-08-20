@@ -26,11 +26,13 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					glow: 'hsl(var(--secondary-glow))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -63,6 +65,20 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				'cyber': ['Orbitron', 'monospace'],
+				'japanese': ['Noto Sans JP', 'sans-serif']
+			},
+			backgroundImage: {
+				'gradient-fire': 'var(--gradient-fire)',
+				'gradient-neon': 'var(--gradient-neon)',
+				'gradient-cyber': 'var(--gradient-cyber)'
+			},
+			boxShadow: {
+				'fire': 'var(--shadow-fire)',
+				'neon': 'var(--shadow-neon)',
+				'cyber': 'var(--shadow-cyber)'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +100,40 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-fire': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px hsl(14 100% 57% / 0.4)'
+					},
+					'50%': {
+						boxShadow: '0 0 40px hsl(14 100% 57% / 0.8)'
+					}
+				},
+				'glow': {
+					'0%, 100%': {
+						textShadow: '0 0 20px hsl(14 100% 57% / 0.5)',
+						filter: 'brightness(1)'
+					},
+					'50%': {
+						textShadow: '0 0 30px hsl(14 100% 57% / 0.8)',
+						filter: 'brightness(1.2)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-fire': 'pulse-fire 2s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},

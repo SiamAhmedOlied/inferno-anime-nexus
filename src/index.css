@@ -1,42 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Anime CTF Team Design System - Squad-Infernoes Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark Cyberpunk Background */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cards with subtle glow */
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover elements */
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Fire Primary Colors */
+    --primary: 14 100% 57%;
+    --primary-foreground: 240 10% 3.9%;
+    --primary-glow: 14 100% 67%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Neon Secondary */
+    --secondary: 326 100% 54%;
+    --secondary-foreground: 240 10% 3.9%;
+    --secondary-glow: 326 100% 64%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted dark tones */
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Hot Pink Accent */
+    --accent: 320 100% 70%;
+    --accent-foreground: 240 10% 3.9%;
 
+    /* Destructive red */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 14 100% 57%;
 
-    --radius: 0.5rem;
+    /* Fire Gradients */
+    --gradient-fire: linear-gradient(135deg, hsl(14 100% 57%), hsl(34 100% 57%), hsl(14 100% 67%));
+    --gradient-neon: linear-gradient(135deg, hsl(326 100% 54%), hsl(280 100% 60%));
+    --gradient-cyber: linear-gradient(180deg, hsl(240 10% 7%), hsl(240 15% 12%));
+    
+    /* Shadows and Glows */
+    --shadow-fire: 0 0 30px hsl(14 100% 57% / 0.5);
+    --shadow-neon: 0 0 20px hsl(326 100% 54% / 0.4);
+    --shadow-cyber: 0 8px 32px hsl(240 10% 3.9% / 0.8);
+    
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +125,95 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-cyber);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Anime Typography */
+  .font-cyber {
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .font-japanese {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  
+  /* Fire Glow Text */
+  .text-fire-glow {
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px hsl(14 100% 57% / 0.5));
+  }
+  
+  /* Neon Glow Text */
+  .text-neon-glow {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px hsl(326 100% 54% / 0.6));
+  }
+  
+  /* Cyber Cards */
+  .card-cyber {
+    background: var(--gradient-cyber);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-cyber), inset 0 1px 0 hsl(326 100% 54% / 0.1);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Hover Effects */
+  .hover-fire {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-fire:hover {
+    box-shadow: var(--shadow-fire);
+    transform: translateY(-2px);
+  }
+  
+  .hover-neon {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-neon:hover {
+    box-shadow: var(--shadow-neon);
+    transform: translateY(-2px);
+  }
+  
+  /* Pulse Animation */
+  .pulse-fire {
+    animation: pulse-fire 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-fire {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(14 100% 57% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(14 100% 57% / 0.8);
+    }
+  }
+  
+  /* Anime Borders */
+  .border-gradient {
+    position: relative;
+    background: var(--gradient-cyber);
+  }
+  
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: var(--gradient-fire);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
   }
 }
