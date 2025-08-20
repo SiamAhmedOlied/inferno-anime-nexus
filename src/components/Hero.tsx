@@ -1,8 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const scrollToAchievements = () => {
+    const element = document.getElementById('achievements');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openDiscord = () => {
+    window.open('https://discord.gg/squad-infernoes', '_blank');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -48,10 +60,21 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="default" size="lg" className="text-lg px-8 py-4 hover-fire pulse-fire">
+          <Button 
+            variant="default" 
+            size="lg" 
+            onClick={scrollToAchievements}
+            className="text-lg px-8 py-4 hover-fire pulse-fire animate-bounce-in"
+          >
             View Achievements
           </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-4 hover-neon border-primary">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={openDiscord}
+            className="text-lg px-8 py-4 hover-neon border-primary animate-bounce-in"
+            style={{ animationDelay: '0.2s' }}
+          >
             Join Our Discord
           </Button>
         </div>

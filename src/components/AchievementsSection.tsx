@@ -46,13 +46,13 @@ const AchievementsSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-transparent to-muted/20">
+    <section id="achievements" className="py-20 px-4 bg-gradient-to-b from-transparent to-muted/20">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 text-base px-4 py-2 border-secondary">
+        <div className="text-center mb-16 animate-slide-up">
+          <Badge variant="outline" className="mb-4 text-base px-4 py-2 border-secondary animate-bounce-in">
             🏆 Hall of Fame
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-6 text-neon-glow">
+          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-6 text-neon-glow animate-glow">
             Battle-Tested Champions
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-japanese leading-relaxed">
@@ -64,7 +64,11 @@ const AchievementsSection = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, index) => (
-            <Card key={index} className="card-cyber hover-fire text-center">
+            <Card 
+              key={index} 
+              className={`card-cyber hover-fire text-center animate-slide-in-left`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <CardContent className="pt-8 pb-6">
                 <div className={`text-4xl md:text-5xl font-cyber font-black ${stat.color} mb-2 animate-glow`}>
                   {stat.number}
@@ -84,7 +88,11 @@ const AchievementsSection = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="card-cyber hover-neon group">
+              <Card 
+                key={index} 
+                className={`card-cyber hover-neon group animate-slide-in-right`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
                 <CardHeader className="flex flex-row items-center space-y-0 pb-3">
                   <div className={`${achievement.color} mr-3 group-hover:animate-pulse`}>
                     {achievement.icon}

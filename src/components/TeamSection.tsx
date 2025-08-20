@@ -33,11 +33,11 @@ const TeamSection = () => {
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 text-base px-4 py-2 border-primary">
+        <div className="text-center mb-16 animate-slide-up">
+          <Badge variant="outline" className="mb-4 text-base px-4 py-2 border-primary animate-bounce-in">
             🚀 Team Overview
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-6 text-fire-glow">
+          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-6 text-fire-glow animate-glow">
             Elite Cyber Warriors
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-japanese leading-relaxed">
@@ -49,7 +49,11 @@ const TeamSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {specialties.map((specialty, index) => (
-            <Card key={index} className="card-cyber hover-fire group cursor-pointer">
+            <Card 
+              key={index} 
+              className={`card-cyber hover-fire group cursor-pointer animate-slide-up`}
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
               <CardHeader className="text-center pb-4">
                 <div className={`${specialty.color} mb-4 flex justify-center group-hover:animate-pulse`}>
                   {specialty.icon}
@@ -67,7 +71,7 @@ const TeamSection = () => {
           ))}
         </div>
         
-        <Card className="card-cyber hover-neon border-gradient">
+        <Card className="card-cyber hover-neon border-gradient animate-zoom-in">
           <CardHeader>
             <CardTitle className="text-2xl font-cyber text-center text-neon-glow">
               Our Mission
